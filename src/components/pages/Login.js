@@ -16,9 +16,11 @@ export default function Login() {
             icon="alternate_email"
           />
           <TextInput type="text" placeholder="Enter password" icon="lock" />
-          <Button>Submit Now</Button>
+          <Button>
+            <span>Submit Now</span>
+          </Button>
           <div className="info">
-            Don't have an account? <a href="signup.html">Create account</a>{" "}
+            Don't have an account? <a href="signup.html">Signup</a>
             instead.
           </div>
         </Form>

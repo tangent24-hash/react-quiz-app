@@ -25,14 +25,19 @@ export function AuthProvider({ children }) {
       setCurrentUser(user);
       setLoading(false);
     });
+
     return unsubscribe;
   }, []);
 
+  // signup function
   async function signup(email, password, username) {
     const auth = getAuth();
     await createUserWithEmailAndPassword(auth, email, password);
 
-    await updateProfile(auth.currentUser, { displayName: username });
+    // update profile
+    await updateProfile(auth.currentUser, {
+      displayName: username,
+    });
 
     const user = auth.currentUser;
     setCurrentUser({
@@ -40,11 +45,13 @@ export function AuthProvider({ children }) {
     });
   }
 
+  // login function
   function login(email, password) {
     const auth = getAuth();
     return signInWithEmailAndPassword(auth, email, password);
   }
 
+  // logout function
   function logout() {
     const auth = getAuth();
     return signOut(auth);
